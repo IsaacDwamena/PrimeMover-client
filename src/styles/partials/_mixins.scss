@@ -1,0 +1,34 @@
+@import "./variables";
+@mixin tablet {
+  @media screen and (min-width: $tablet-breakpoint) {
+    @content;
+  }
+}
+
+@mixin mobile-tablet {
+  @media screen and (min-width: $mobile-tablet-breakpoint) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media screen and (min-width: $desktop-breakpoint) {
+    @content;
+  }
+}
+
+@mixin beyond-desktop {
+  @media screen and (min-width: $beyond-desktop-breakpoint) {
+    @content;
+  }
+}
+@mixin global {
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  body {
+    font-family: "AvenirNext LT Pro";
+  }
+}
