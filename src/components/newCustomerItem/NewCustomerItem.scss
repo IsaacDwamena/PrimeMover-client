@@ -1,0 +1,67 @@
+@import "../../styles/partials/mixins";
+@import "../../styles/partials/variables";
+
+.customer-item {
+  background-color: $primary-color-1;
+  margin-bottom: 1rem;
+  padding: 1rem;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
+  @include desktop {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    gap: 0;
+  }
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+
+    @include mobile-tablet {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0;
+      align-items: center;
+    }
+  }
+
+  &__group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+
+    @include full-screen {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0;
+      align-items: center;
+    }
+
+    &--mod {
+      @include full-screen {
+        grid-template-columns: 4fr 1fr;
+      }
+    }
+  }
+
+  &__estimate {
+    background-color: $primary-color-2;
+    padding: 0.5rem 0.8rem;
+    width: fit-content;
+    border-radius: 5px;
+  }
+
+  &__icons {
+    display: flex;
+    gap: 3rem;
+
+    @include desktop {
+      gap: 0;
+      justify-content: space-evenly;
+    }
+  }
+}

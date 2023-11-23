@@ -11,6 +11,18 @@
   }
 }
 
+@mixin mobile-tablet-mod {
+  @media screen and (min-width: $mobile-tablet-mod-breakpoint) {
+    @content;
+  }
+}
+
+@mixin full-screen {
+  @media screen and (min-width: $full-screen-breakpoint) {
+    @content;
+  }
+}
+
 @mixin desktop {
   @media screen and (min-width: $desktop-breakpoint) {
     @content;

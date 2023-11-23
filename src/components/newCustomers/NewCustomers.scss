@@ -1,0 +1,10 @@
+@import "../../styles/partials/variables";
+@import "../../styles/partials/mixins";
+
+.customer {
+  padding: 0 1rem;
+
+  @include tablet {
+    padding: 0;
+  }
+}
