@@ -1,0 +1,73 @@
+@import "../../styles/partials/mixins";
+@import "../../styles/partials/variables";
+
+body {
+  position: relative;
+  font-size: 1rem;
+}
+
+body.active-modal {
+  overflow-y: hidden;
+}
+
+.modal {
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  &__overlay {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.737);
+    z-index: -1;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    background-color: $primary-color-1;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 1rem;
+    width: 80%;
+
+    @include tablet {
+      width: 60%;
+    }
+
+    @include desktop {
+      width: 50%;
+    }
+  }
+
+  &__text {
+    line-height: 1.7rem;
+    margin: 1rem 0 2rem 0;
+  }
+
+  &__btn-close {
+    align-self: flex-end;
+  }
+
+  &__btn-delete {
+    width: fit-content;
+    border: none;
+    border-radius: 5px;
+    background-color: $primary-color-2;
+    padding: 0.5rem 1rem;
+    align-self: center;
+    font-size: 1rem;
+    font-family: "Lato", sans-serif;
+
+    @include mobile-tablet {
+      padding: 0.8rem 1.2rem;
+    }
+  }
+}

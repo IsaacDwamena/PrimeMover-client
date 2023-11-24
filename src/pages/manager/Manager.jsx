@@ -2,9 +2,6 @@ import "./Manager.scss";
 
 import { SideBar } from "../../components/sideBar/SideBar";
 import { TopNav } from "../../components/topNav/TopNav";
-import { NewCustomers } from "../../components/newCustomers/NewCustomers";
-import { AddCustomer } from "../../components/addCustomer/AddCustomer";
-import { Completed } from "../../components/completed/Completed";
 
 import { useState } from "react";
 import { Outlet } from "react-router-dom";

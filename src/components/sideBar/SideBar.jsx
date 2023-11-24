@@ -9,7 +9,6 @@ import { NavLink, useNavigate } from "react-router-dom";
 
 export const SideBar = ({ menuActive, onSideMenuToggler }) => {
   const navigate = useNavigate();
-  const some = window.innerWidth;
 
   return (
     <div className={menuActive ? "sidebar sidebar--active" : "sidebar"}>

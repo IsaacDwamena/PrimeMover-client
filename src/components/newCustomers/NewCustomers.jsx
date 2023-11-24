@@ -8,16 +8,15 @@ export const NewCustomers = () => {
   const [customers, setCustomers] = useState(null);
   const SERVER_URL = process.env.REACT_APP_SERVER_URL;
 
+  const fetchCustomers = async () => {
+    try {
+      const { data } = await axios.get(`${SERVER_URL}/customers`);
+      setCustomers(data);
+    } catch (error) {
+      <p>Unable to fetch data, please refresh page</p>;
+    }
+  };
   useEffect(() => {
-    const fetchCustomers = async () => {
-      try {
-        const { data } = await axios.get(`${SERVER_URL}/customers`);
-        setCustomers(data);
-      } catch (error) {
-        <p>Unable to fetch data, please refresh page</p>;
-      }
-    };
-
     fetchCustomers();
   }, []);
 
@@ -26,7 +25,11 @@ export const NewCustomers = () => {
   return (
     <div className="customer">
       {customers.map((customer) => (
-        <NewCustomerItem key={customer.id} customer={customer} />
+        <NewCustomerItem
+          key={customer.id}
+          customer={customer}
+          fetchCustomers={fetchCustomers}
+        />
       ))}
     </div>
   );
