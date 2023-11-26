@@ -1,0 +1,90 @@
+@import "../../styles/partials/mixins";
+@import "../../styles/partials/variables";
+
+input {
+  border: 1px solid $primary-color-3;
+  outline: none;
+  border-radius: 5px;
+  font-family: "Lato", sans-serif;
+  padding: 0.5rem 0.8rem;
+  font-size: 1rem;
+}
+
+.add-customer {
+  padding: 0 1rem;
+  display: flex;
+  flex-direction: column;
+
+  //   @include mobile-tablet {
+  //     display: block;
+  //   }
+
+  &__form {
+    background-color: $primary-color-1;
+    padding: 1rem;
+    border-radius: 5px;
+  }
+
+  &__sub-container {
+    @include full-screen {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 5%;
+    }
+  }
+
+  &__input-container {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+  }
+
+  &__label {
+    margin-bottom: 0.5rem;
+  }
+
+  &__input-box {
+    margin-bottom: 1rem;
+  }
+
+  &__sub3 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  &__room-count,
+  &__box-count {
+    width: 2rem;
+    margin-right: 0.5rem;
+    padding: 0.3rem 0.3rem;
+  }
+
+  &__residence-input {
+    margin-left: 0.5rem;
+    padding: 0.5rem 0.8rem;
+  }
+
+  &__date-box {
+    margin-left: 0.5rem;
+  }
+
+  &__insurance-box {
+    margin-right: 0.5rem;
+  }
+
+  &__cta {
+    padding: 1rem;
+    border: none;
+    font-family: "Lato", sans-serif;
+    background-color: $primary-color-2;
+    border-radius: 5px;
+    margin: 1rem 1rem 2rem 0;
+    align-self: flex-end;
+    width: 40%;
+
+    @include full-screen {
+      align-self: center;
+      margin-right: 0;
+    }
+  }
+}

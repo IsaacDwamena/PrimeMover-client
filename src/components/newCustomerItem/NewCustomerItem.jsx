@@ -5,6 +5,7 @@ import Check from "../../assets/icons/Check.svg";
 import { DelModal } from "../delModal/DelModal";
 import { useState } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 export const NewCustomerItem = ({ customer, fetchCustomers }) => {
   const [modal, setModal] = useState(false);
@@ -47,9 +48,12 @@ export const NewCustomerItem = ({ customer, fetchCustomers }) => {
       <div className="customer-item">
         <div className="customer-item__container">
           <div className="customer-item__group">
-            <p className="customer-item__name">
+            <Link
+              to={`customer/${customer.id}`}
+              className="customer-item__name"
+            >
               {customer.first_name.concat(" ", customer.last_name)}
-            </p>
+            </Link>
             <p className="customer-item__date">
               {new Date(customer.move_date).toLocaleDateString()}
             </p>

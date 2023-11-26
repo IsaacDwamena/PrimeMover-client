@@ -1,6 +1,11 @@
 @import "../../styles/partials/mixins";
 @import "../../styles/partials/variables";
 
+.active {
+  background-color: $primary-color-1;
+  border-radius: 5px;
+}
+
 .sidebar {
   transition: 0.3s;
   padding: 2rem 1rem;
@@ -23,7 +28,7 @@
 
   &--active {
     padding: 2rem 1rem;
-    background-color: grey;
+    background-color: $primary-color-2;
     display: block;
     width: 100%;
 
@@ -62,7 +67,10 @@
   &__link {
     display: flex;
     gap: 1rem;
-    padding: 1rem 0;
+    padding: 1rem;
     align-items: center;
+    margin-bottom: 1rem;
+    color: black;
+    cursor: pointer;
   }
 }

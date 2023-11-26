@@ -1,0 +1,22 @@
+@import "../../styles/partials/mixins";
+@import "../../styles/partials/variables";
+
+.searched-item {
+  padding: 0 1rem;
+
+  &__container {
+    background-color: $primary-color-1;
+    margin-bottom: 1rem;
+    padding: 1rem;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+
+    @media screen and (min-width: 520px) {
+      display: grid;
+      grid-template-columns: 2fr 3fr 1fr;
+      gap: 0;
+    }
+  }
+}

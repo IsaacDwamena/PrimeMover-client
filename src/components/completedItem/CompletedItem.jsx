@@ -4,6 +4,7 @@ import Delete from "../../assets/icons/Delete.svg";
 import { useState } from "react";
 import { DelCompletedModal } from "../delModal/DelCompletedModal";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 export const CompletedItem = ({ complete, fetchCompleted }) => {
   const [modal, setModal] = useState(false);
@@ -45,9 +46,9 @@ export const CompletedItem = ({ complete, fetchCompleted }) => {
         />
       )}
       <div className="completed-item">
-        <p className="completed-item__name">
+        <Link to={`customer/${complete.id}`} className="completed-item__name">
           {complete.first_name.concat(" ", complete.last_name)}
-        </p>
+        </Link>
         <p className="completed-item__email">{complete.email}</p>
         <div className="completed-item__icons">
           <img
