@@ -1,8 +1,36 @@
-import { useState } from "react";
-import "./AddCustomer.scss";
+import { useState, useEffect } from "react";
+import "../addCustomer/AddCustomer.scss";
 import axios from "axios";
+import { useParams } from "react-router-dom";
 
-export const AddCustomer = () => {
+export const EditCustomer = () => {
+  const { id } = useParams();
+  const SERVER_URL = process.env.REACT_APP_SERVER_URL;
+  const [customerInfo, setCustomerInfo] = useState(null);
+
+  const fetchCustomer = async () => {
+    try {
+      const { data } = await axios.get(`${SERVER_URL}/customers/${id}`);
+      setCustomerInfo(data);
+      setFirstNameInput(data.first_name);
+      setLastNameInput(data.last_name);
+      setEmailInput(data.first_name);
+      setContactInput(data.contact);
+      setOriginAddressInput(data.current_address);
+      setDestinationAddressInput(data.destination_address);
+      setRoomInput(data.rooms_number);
+      setBoxInput(data.boxes_number);
+      setResidenceInput(data.residence_type);
+      setMoveDateInput(data.move_date);
+      setInsuranceInput(data.insurance);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  useEffect(() => {
+    fetchCustomer();
+  }, []);
+
   const [firstNameInput, setFirstNameInput] = useState("");
   const [lastNameInput, setLastNameInput] = useState("");
   const [emailInput, setEmailInput] = useState("");
@@ -46,17 +74,22 @@ export const AddCustomer = () => {
     ) {
       console.log("empty field");
     } else {
-      const createCustomer = async () => {
+      const updateCustomer = async () => {
         try {
-          const send = await axios.post(`${SERVER_URL}/customers`, postObj);
+          const send = await axios.put(
+            `${SERVER_URL}/customers/${id}`,
+            postObj
+          );
           console.log("sent");
         } catch (error) {
           console.log(error);
         }
       };
-      createCustomer();
+      updateCustomer();
     }
   };
+
+  if (!customerInfo) return <p>Loading...</p>;
 
   return (
     <div className="add-customer">
@@ -68,6 +101,7 @@ export const AddCustomer = () => {
               <input
                 type="text"
                 name="firstname"
+                value={firstNameInput}
                 className="add-customer__firstname-input input"
                 onChange={(event) => setFirstNameInput(event.target.value)}
               />
@@ -77,6 +111,7 @@ export const AddCustomer = () => {
               <input
                 type="text"
                 name="lastname"
+                value={lastNameInput}
                 className="add-customer__lastname-input input"
                 onChange={(event) => setLastNameInput(event.target.value)}
               />
@@ -86,6 +121,7 @@ export const AddCustomer = () => {
               <input
                 type="email"
                 name="email"
+                value={emailInput}
                 className="add-customer__email-input"
                 onChange={(event) => setEmailInput(event.target.value)}
               />
@@ -97,6 +133,7 @@ export const AddCustomer = () => {
               <input
                 type="number"
                 name="contact"
+                value={contactInput}
                 className="add-customer__contact-input input"
                 onChange={(event) => setContactInput(event.target.value)}
               />
@@ -106,6 +143,7 @@ export const AddCustomer = () => {
               <input
                 type="text"
                 name="address"
+                value={originAddressInput}
                 className="add-customer__address-input input"
                 onChange={(event) => setOriginAddressInput(event.target.value)}
               />
@@ -115,6 +153,7 @@ export const AddCustomer = () => {
               <input
                 type="text"
                 name="destination-address"
+                value={destinationAddressInput}
                 className="add-customer__destination-address-input input"
                 onChange={(event) =>
                   setDestinationAddressInput(event.target.value)
@@ -174,6 +213,7 @@ export const AddCustomer = () => {
               <input
                 type="date"
                 name="date"
+                value={moveDateInput}
                 className="add-customer__date-box"
                 onChange={(event) => setMoveDateInput(event.target.value)}
               />
@@ -193,7 +233,7 @@ export const AddCustomer = () => {
           </div>
         </div>
         <button type="submit" className="add-customer__cta">
-          Submit
+          Save Changes
         </button>
       </form>
     </div>

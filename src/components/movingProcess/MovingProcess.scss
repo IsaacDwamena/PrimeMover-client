@@ -1,0 +1,56 @@
+@import "../../styles/partials/mixins";
+@import "../../styles/partials/variables";
+
+.steps {
+  padding: 2rem 0;
+
+  &__header {
+    text-align: center;
+    margin-bottom: 1.5rem;
+  }
+
+  &__wrapper {
+    @include tablet {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 5%;
+    }
+  }
+
+  &__image {
+    display: none;
+
+    @include tablet {
+      display: block;
+      width: 100%;
+    }
+  }
+
+  &__step-container {
+    @include tablet {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      margin-top: 2rem;
+    }
+  }
+
+  &__block-container {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  &__number {
+    border-radius: 50%;
+    width: 2rem;
+    height: 2rem;
+    background-color: $primary-color-4;
+    color: $primary-color-1;
+    padding: 0.3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}

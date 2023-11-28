@@ -4,11 +4,13 @@ import { Manager } from "./pages/manager/Manager";
 import { Home } from "./pages/home/Home";
 import { NewCustomers } from "./components/newCustomers/NewCustomers";
 import { AddCustomer } from "./components/addCustomer/AddCustomer";
+import { EditCustomer } from "./components/editCustomer/EditCustomer";
 import { Completed } from "./components/completed/Completed";
 import { SearchCustomer } from "./components/searchCustomer/SearchCustomer";
 import { Customer } from "./components/customer/Customer";
 import { Login } from "./components/login/Login";
 import { Signup } from "./components/signup/Signup";
+import { Estimate } from "./components/estimate/Estimate";
 
 function App() {
   return (
@@ -21,6 +23,8 @@ function App() {
           <Route path="manager" element={<Manager />}>
             <Route index element={<NewCustomers />} />
             <Route path="addCustomer" element={<AddCustomer />} />
+            <Route path="editCustomer/:id" element={<EditCustomer />} />
+            <Route path="estimate/:id" element={<Estimate />} />
             <Route path="completed" element={<Completed />} />
             <Route path="search/:query" element={<SearchCustomer />} />
             <Route path="customer/:id" element={<Customer />} />

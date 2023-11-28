@@ -1,2 +1,26 @@
 @import "../../styles/partials/mixins";
 @import "../../styles/partials/variables";
+
+.add-customer {
+  &__buttons {
+    margin: 2rem 0 1rem 0;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  &__nav-links {
+    padding: 0.5rem 0.8rem;
+    background-color: $primary-color-2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  &__icon {
+    margin-right: 0.5rem;
+  }
+}

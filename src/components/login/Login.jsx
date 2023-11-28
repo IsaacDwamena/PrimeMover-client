@@ -69,7 +69,7 @@ export const Login = () => {
               type="email"
               name="email"
               placeholder="Email"
-              className="login__email input"
+              className="login__email auth-input"
               onChange={(event) => setUserEmailLogin(event.target.value)}
             />
           </div>
@@ -89,7 +89,7 @@ export const Login = () => {
               type="password"
               name="password"
               placeholder="Password"
-              className="login__passwod input"
+              className="login__passwod auth-input"
               onChange={(event) => setUserPasswordLogin(event.target.value)}
             />
           </div>

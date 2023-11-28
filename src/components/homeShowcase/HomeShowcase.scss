@@ -1,0 +1,27 @@
+@import "../../styles/partials/variables";
+@import "../../styles/partials/mixins";
+
+.showcase {
+  padding-bottom: 2rem;
+
+  &__title-highlight {
+    color: $primary-color-4;
+  }
+
+  &__info {
+    line-height: 1.4rem;
+    margin: 1rem 0;
+  }
+
+  &__contain-image {
+    display: none;
+  }
+
+  &__btn {
+    border: none;
+    background-color: $primary-color-4;
+    padding: 0.5rem 0.8rem;
+    border-radius: 5px;
+    color: $primary-color-1;
+  }
+}

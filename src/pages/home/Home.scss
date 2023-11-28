@@ -1,0 +1,17 @@
+@import "../../styles/partials/mixins";
+@import "../../styles/partials/variables";
+
+.main {
+  padding: 0 1rem;
+
+  @include mobile-tablet {
+    padding: 0 2rem;
+  }
+
+  @include mobile-tablet-mod {
+    padding: 0 4rem;
+  }
+  @include full-screen {
+    padding: 0 6rem;
+  }
+}

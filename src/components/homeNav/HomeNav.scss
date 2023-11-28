@@ -1,0 +1,29 @@
+@import "../../styles/partials/variables";
+@import "../../styles/partials/mixins";
+
+.home-nav {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem 0;
+  gap: 2rem;
+
+  @include mobile-tablet {
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 0;
+  }
+
+  &__links-conatiner {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  &__login {
+    background-color: $primary-color-4;
+    padding: 0.5rem 0.8rem;
+    border-radius: 5px;
+    color: $primary-color-1;
+  }
+}

@@ -15,10 +15,6 @@ input {
   display: flex;
   flex-direction: column;
 
-  //   @include mobile-tablet {
-  //     display: block;
-  //   }
-
   &__form {
     background-color: $primary-color-1;
     padding: 1rem;
@@ -54,9 +50,10 @@ input {
 
   &__room-count,
   &__box-count {
-    width: 2rem;
+    width: 3rem;
     margin-right: 0.5rem;
     padding: 0.3rem 0.3rem;
+    text-align: center;
   }
 
   &__residence-input {

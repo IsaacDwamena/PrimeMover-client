@@ -1,0 +1,14 @@
+@import "../../styles/partials/mixins";
+@import "../../styles/partials/variables";
+
+.footer {
+  height: 20vh;
+  background-color: $primary-color-4;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &__header {
+    color: $primary-color-1;
+  }
+}
