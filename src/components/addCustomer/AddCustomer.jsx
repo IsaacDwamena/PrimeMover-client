@@ -92,7 +92,7 @@ export const AddCustomer = () => {
       setEmailError(true);
       return;
     }
-    if (contactInput.length != 10 || !contactInput) {
+    if (contactInput.length !== 10 || !contactInput) {
       setContactError(true);
       return;
     }
