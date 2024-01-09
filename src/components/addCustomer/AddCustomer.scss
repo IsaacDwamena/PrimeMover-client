@@ -1,17 +1,20 @@
 @import "../../styles/partials/mixins";
 @import "../../styles/partials/variables";
 
-input {
+.input {
   border: 1px solid $primary-color-3;
   outline: none;
   border-radius: 5px;
   font-family: "Lato", sans-serif;
   padding: 0.5rem 0.8rem;
   font-size: 1rem;
+
+  &:focus {
+    border: 2px solid $primary-color-4;
+  }
 }
 
 .add-customer {
-  padding: 0 1rem;
   display: flex;
   flex-direction: column;
 
@@ -69,15 +72,32 @@ input {
     margin-right: 0.5rem;
   }
 
+  &__cta-container {
+    // display: flex;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+
   &__cta {
     padding: 1rem;
     border: none;
     font-family: "Lato", sans-serif;
     background-color: $primary-color-2;
     border-radius: 5px;
-    margin: 1rem 1rem 2rem 0;
-    align-self: flex-end;
-    width: 40%;
+    // margin: 1rem 1rem 2rem 0;
+    // align-self: flex-end;
+    // width: 40%;
+    text-align: center;
+    color: black;
+    transition: 0.2s ease-in-out;
+
+    &:hover {
+      background-color: $primary-color-4;
+      color: $primary-color-1;
+      font-weight: bold;
+    }
 
     @include full-screen {
       align-self: center;

@@ -1,0 +1,97 @@
+@import "../../styles/partials/mixins";
+@import "../../styles/partials/variables";
+
+.user-form {
+  padding: 1rem 0 2rem 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 33rem;
+
+  &__form {
+    width: 100%;
+
+    @include mobile-tablet {
+      width: 80%;
+    }
+
+    @include mobile-tablet-mod {
+      width: 60%;
+    }
+  }
+
+  &__hidden {
+    display: none;
+  }
+
+  &__header {
+    margin-bottom: 2rem;
+    text-align: center;
+  }
+
+  &__input-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+  }
+
+  &__input-box {
+    margin-bottom: 1rem;
+  }
+
+  &__room-count,
+  &__box-count {
+    width: 3rem;
+    text-align: center;
+    margin-right: 0.5rem;
+  }
+
+  &__sub3-sub4 {
+    @include full-screen {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  &__sub-label {
+    margin-right: 0.5rem;
+  }
+
+  &__error {
+    color: red;
+    font-size: 0.8rem;
+  }
+
+  &__residence-input {
+    margin-top: 0.5rem;
+  }
+
+  &__completed {
+    color: $primary-color-4;
+    text-align: center;
+  }
+
+  &__btn-container {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+  }
+
+  &__cta {
+    border: none;
+    padding: 0.5rem 0.8rem;
+    background-color: $primary-color-4;
+    border-radius: 5px;
+    color: $primary-color-1;
+    cursor: pointer;
+
+    &--disable {
+      background-color: $secondary-color-4;
+      border: none;
+      padding: 0.5rem 0.8rem;
+      border-radius: 5px;
+      color: $primary-color-1;
+    }
+  }
+}

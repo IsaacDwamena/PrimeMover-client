@@ -2,8 +2,9 @@
 @import "../../styles/partials/variables";
 
 .active {
-  background-color: $primary-color-1;
+  background-color: $primary-color-4;
   border-radius: 5px;
+  color: $primary-color-1;
 }
 
 .sidebar {
@@ -50,6 +51,8 @@
 
   &__logo {
     font-size: 2rem;
+    font-weight: bolder;
+    color: black;
   }
 
   &__nav-links {
@@ -70,7 +73,12 @@
     padding: 1rem;
     align-items: center;
     margin-bottom: 1rem;
-    color: black;
     cursor: pointer;
+
+    &:hover {
+      background-color: $secondary-color-4;
+      border-radius: 5px;
+      color: $primary-color-1;
+    }
   }
 }

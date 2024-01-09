@@ -23,7 +23,7 @@ export const Completed = () => {
   if (!completes) return <p>Loading...</p>;
   return (
     <div className="completed">
-      {completes.map((complete) => (
+      {completes.toReversed().map((complete) => (
         <CompletedItem
           key={complete.id}
           complete={complete}

@@ -11,6 +11,7 @@ import { Customer } from "./components/customer/Customer";
 import { Login } from "./components/login/Login";
 import { Signup } from "./components/signup/Signup";
 import { Estimate } from "./components/estimate/Estimate";
+import { NotFound } from "./pages/notFound/NotFound";
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
             <Route path="customer/:id" element={<Customer />} />
             <Route path="completed/customer/:id" element={<Customer />} />
           </Route>
+          <Route path="/*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
     </>

@@ -2,7 +2,9 @@ import "./TopNav.scss";
 import Menu from "../../assets/icons/Menu.svg";
 import Search from "../../assets/icons/Search.svg";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import Profle from "../../assets/icons/Profile.svg";
+import Landing from "../../assets/icons/Landing.svg";
 
 export const TopNav = ({ onSideMenuToggler }) => {
   const [searchedCustomerInput, setSearchedCustomerInput] = useState([]);
@@ -27,12 +29,12 @@ export const TopNav = ({ onSideMenuToggler }) => {
           type="text"
           name="search"
           id="search"
-          placeholder="Search by last name or conatact"
+          placeholder="Search by last name or contact"
           className="top-nav__search-input"
           onChange={(event) => setSearchedCustomerInput(event.target.value)}
         />
       </form>
-      <div className="top-nav__profile"></div>
+      <img src={Profle} alt="profile" className="top-nav__profile" />
     </div>
   );
 };

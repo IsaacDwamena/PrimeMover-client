@@ -14,7 +14,10 @@ export const HomeShowcase = () => {
             We strive to make your moving experience as enjoyable and
             stress-free as possible.
           </p>
-          <button className="showcase__btn">Get Free Estimate</button>
+
+          <a href="#form">
+            <button className="showcase__btn">Get Free Estimate</button>
+          </a>
         </div>
         <div className="showcase__contain-image">image</div>
       </div>

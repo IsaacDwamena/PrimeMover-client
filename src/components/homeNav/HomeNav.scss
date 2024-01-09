@@ -1,6 +1,9 @@
 @import "../../styles/partials/variables";
 @import "../../styles/partials/mixins";
 
+.high {
+  color: $primary-color-4;
+}
 .home-nav {
   display: flex;
   flex-direction: column;
@@ -12,6 +15,12 @@
     flex-direction: row;
     justify-content: space-between;
     gap: 0;
+  }
+
+  &__logo {
+    font-size: 2rem;
+    font-weight: bolder;
+    color: black;
   }
 
   &__links-conatiner {

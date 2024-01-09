@@ -29,11 +29,27 @@ export const NewCustomerItem = ({ customer, fetchCustomers }) => {
         );
         fetchCustomers();
       } catch (error) {
-        <p>Unable to fetch data, please refresh page</p>;
+        console.error("Error updating user:", error);
       }
     };
 
     addCompletedItem();
+  };
+
+  const onSendEmail = () => {
+    const sendEstimateEmail = async () => {
+      try {
+        const Response = await axios.post(
+          `${SERVER_URL}/email/mail/${customer.id}`,
+          customer.id
+        );
+        fetchCustomers();
+      } catch (error) {
+        console.error("Error updating email:", error);
+      }
+    };
+
+    sendEstimateEmail();
   };
 
   return (
@@ -61,7 +77,7 @@ export const NewCustomerItem = ({ customer, fetchCustomers }) => {
           <div className="customer-item__group customer-item__group--mod">
             <p className="customer-item__email">{customer.email}</p>
             <div className="customer-item__estimate-container">
-              <p className="customer-item__estimate">$100</p>
+              <p className="customer-item__estimate">${customer.estimate}</p>
             </div>
           </div>
         </div>
@@ -70,6 +86,7 @@ export const NewCustomerItem = ({ customer, fetchCustomers }) => {
             src={Email}
             alt="email icon"
             className="customer-item__send-email"
+            onClick={onSendEmail}
           />
           <img
             src={Delete}

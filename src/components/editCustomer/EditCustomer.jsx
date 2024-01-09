@@ -1,12 +1,23 @@
 import { useState, useEffect } from "react";
 import "../addCustomer/AddCustomer.scss";
+import Error from "../../assets/icons/Error.svg";
 import axios from "axios";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate, Link } from "react-router-dom";
+import validator from "validator";
 
 export const EditCustomer = () => {
   const { id } = useParams();
   const SERVER_URL = process.env.REACT_APP_SERVER_URL;
   const [customerInfo, setCustomerInfo] = useState(null);
+  const navigate = useNavigate();
+
+  const getCurrentDate = () => {
+    const today = new Date();
+    const month = String(today.getMonth() + 1).padStart(2, "0");
+    const day = String(today.getDate()).padStart(2, "0");
+    const year = today.getFullYear();
+    return `${year}-${month}-${day}`;
+  };
 
   const fetchCustomer = async () => {
     try {
@@ -14,14 +25,14 @@ export const EditCustomer = () => {
       setCustomerInfo(data);
       setFirstNameInput(data.first_name);
       setLastNameInput(data.last_name);
-      setEmailInput(data.first_name);
+      setEmailInput(data.email);
       setContactInput(data.contact);
       setOriginAddressInput(data.current_address);
       setDestinationAddressInput(data.destination_address);
       setRoomInput(data.rooms_number);
       setBoxInput(data.boxes_number);
       setResidenceInput(data.residence_type);
-      setMoveDateInput(data.move_date);
+      setMoveDateInput(new Date(data.move_date).toISOString().split("T")[0]);
       setInsuranceInput(data.insurance);
     } catch (error) {
       console.log(error);
@@ -39,9 +50,26 @@ export const EditCustomer = () => {
   const [destinationAddressInput, setDestinationAddressInput] = useState("");
   const [roomInput, setRoomInput] = useState(0);
   const [boxInput, setBoxInput] = useState(0);
-  const [reisdenceInput, setResidenceInput] = useState("House");
+  const [residenceInput, setResidenceInput] = useState("House");
   const [moveDateInput, setMoveDateInput] = useState("");
   const [insuranceInput, setInsuranceInput] = useState(false);
+
+  const [firstNameError, setFirstNameError] = useState(false);
+  const [lastNameError, setLastNameError] = useState(false);
+  const [emailError, setEmailError] = useState(false);
+  const [contactError, setContactError] = useState(false);
+  const [roomError, setRoomError] = useState(false);
+  const [boxError, setBoxError] = useState(false);
+  const [residenceError, setResidenceError] = useState(false);
+  const [moveDateError, setMoveDateError] = useState(false);
+  const [originAddError, setOriginAddError] = useState(false);
+  const [destinationAddError, setDestinationAddError] = useState(false);
+
+  validator.isAddress = function (value) {
+    console.log("Input value:", value);
+    const addressPattern = /^\d+\s[A-Za-z\s]+,\s[A-Za-z\s]+$/i;
+    return addressPattern.test(value);
+  };
 
   const onSubmitForm = (event) => {
     event.preventDefault();
@@ -54,12 +82,76 @@ export const EditCustomer = () => {
       current_address: originAddressInput,
       destination_address: destinationAddressInput,
       move_date: moveDateInput,
-      residence_type: reisdenceInput,
+      residence_type: residenceInput,
       rooms_number: roomInput,
       boxes_number: boxInput,
       insurance: insuranceInput,
       completed: false,
     };
+
+    const validEmail = validator.isEmail(emailInput);
+    const validOriginAdd =
+      originAddressInput && validator.isAddress(originAddressInput);
+    const validDestinationAdd =
+      destinationAddressInput && validator.isAddress(destinationAddressInput);
+
+    setFirstNameError(false);
+    setLastNameError(false);
+    setContactError(false);
+    setEmailError(false);
+    setOriginAddError(false);
+    setDestinationAddError(false);
+    setMoveDateError(false);
+    setResidenceError(false);
+    setRoomError(false);
+    setBoxError(false);
+
+    if (!firstNameInput) {
+      setFirstNameError(true);
+      return;
+    }
+    if (!lastNameInput) {
+      setLastNameError(true);
+      return;
+    }
+
+    if (!validEmail) {
+      setEmailError(true);
+      return;
+    }
+    if (!contactInput) {
+      setContactError(true);
+      return;
+    }
+
+    if (!validOriginAdd) {
+      setOriginAddError(true);
+      return;
+    }
+
+    if (!validDestinationAdd) {
+      setDestinationAddError(true);
+      return;
+    }
+
+    if (!moveDateInput) {
+      setMoveDateError(true);
+      return;
+    }
+    if (!residenceInput) {
+      setResidenceError(true);
+      return;
+    }
+    if (!roomInput) {
+      setRoomError(true);
+      return;
+    }
+
+    if (!boxInput) {
+      setBoxError(true);
+      return;
+    }
+
     if (
       !firstNameInput ||
       !lastNameInput ||
@@ -69,7 +161,7 @@ export const EditCustomer = () => {
       !destinationAddressInput ||
       !roomInput ||
       !boxInput ||
-      !reisdenceInput ||
+      !residenceInput ||
       !moveDateInput
     ) {
       console.log("empty field");
@@ -81,6 +173,7 @@ export const EditCustomer = () => {
             postObj
           );
           console.log("sent");
+          navigate(`/manager`);
         } catch (error) {
           console.log(error);
         }
@@ -106,6 +199,16 @@ export const EditCustomer = () => {
                 onChange={(event) => setFirstNameInput(event.target.value)}
               />
             </div>
+            {firstNameError && (
+              <p className="login__error-text">
+                <img
+                  className="login__error-icon"
+                  src={Error}
+                  alt="error icon"
+                />
+                Please provide a First Name.
+              </p>
+            )}
             <div className="add-customer__input-container">
               <label className="add-customer__label">Last Name</label>
               <input
@@ -116,28 +219,59 @@ export const EditCustomer = () => {
                 onChange={(event) => setLastNameInput(event.target.value)}
               />
             </div>
+            {lastNameError && (
+              <p className="login__error-text">
+                <img
+                  className="login__error-icon"
+                  src={Error}
+                  alt="error icon"
+                />
+                Please provide a Last Name.
+              </p>
+            )}
             <div className="add-customer__input-container">
               <label className="add-customer__label">Email</label>
               <input
                 type="email"
                 name="email"
                 value={emailInput}
-                className="add-customer__email-input"
+                className="add-customer__email-input input"
                 onChange={(event) => setEmailInput(event.target.value)}
               />
             </div>
+            {emailError && (
+              <p className="login__error-text">
+                <img
+                  className="login__error-icon"
+                  src={Error}
+                  alt="error icon"
+                />
+                Please provide a valid email.
+              </p>
+            )}
           </div>
           <div className="add-customer__sub2">
             <div className="add-customer__input-container">
               <label className="add-customer__label">Contact</label>
               <input
-                type="number"
+                type="tel"
                 name="contact"
+                maxLength={10}
                 value={contactInput}
                 className="add-customer__contact-input input"
                 onChange={(event) => setContactInput(event.target.value)}
               />
             </div>
+            {contactError && (
+              <p className="login__error-text">
+                <img
+                  className="login__error-icon"
+                  src={Error}
+                  alt="error icon"
+                />
+                Please provide a valid contact.
+              </p>
+            )}
             <div className="add-customer__input-container">
               <label className="add-customer__label">Origin Address</label>
               <input
@@ -148,6 +282,16 @@ export const EditCustomer = () => {
                 onChange={(event) => setOriginAddressInput(event.target.value)}
               />
             </div>
+            {originAddError && (
+              <p className="login__error-text">
+                <img
+                  className="login__error-icon"
+                  src={Error}
+                  alt="error icon"
+                />
+                Please adhere to format: 123 street name, City
+              </p>
+            )}
             <div className="add-customer__input-container">
               <label className="add-customer__label">Destination Address</label>
               <input
@@ -160,6 +304,16 @@ export const EditCustomer = () => {
                 }
               />
             </div>
+            {destinationAddError && (
+              <p className="login__error-text">
+                <img
+                  className="login__error-icon"
+                  src={Error}
+                  alt="error icon"
+                />
+                Please adhere to format: 123 street name, City
+              </p>
+            )}
           </div>
         </div>
         <div className="add-customer__sub-container">
@@ -176,6 +330,16 @@ export const EditCustomer = () => {
                 Rooms
               </label>
             </div>
+            {roomError && (
+              <p className="login__error-text">
+                <img
+                  className="login__error-icon"
+                  src={Error}
+                  alt="error icon"
+                />
+                Please provide number of rooms.
+              </p>
+            )}
             <div className="add-customer__input-box">
               <input
                 type="number"
@@ -188,6 +352,16 @@ export const EditCustomer = () => {
                 Box(es)
               </label>
             </div>
+            {boxError && (
+              <p className="login__error-text">
+                <img
+                  className="login__error-icon"
+                  src={Error}
+                  alt="error icon"
+                />
+                Please provide number of boxes.
+              </p>
+            )}
           </div>
           <div className="add-customer__sub4">
             <div className="add-customer__input-box">
@@ -196,8 +370,8 @@ export const EditCustomer = () => {
               </label>
               <select
                 name="residence"
-                className="add-customer__residence-input"
-                value={reisdenceInput}
+                className="add-customer__residence-input input"
+                value={residenceInput}
                 onChange={(event) => setResidenceInput(event.target.value)}
               >
                 <option value="Apartment">Apartment</option>
@@ -208,16 +382,37 @@ export const EditCustomer = () => {
                 <option value="Bungalow">Bungalow</option>
               </select>
             </div>
+            {residenceError && (
+              <p className="login__error-text">
+                <img
+                  className="login__error-icon"
+                  src={Error}
+                  alt="error icon"
+                />
+                Please provide number of rooms.
+              </p>
+            )}
             <div className="add-customer__input-box">
               <label className="add-customer__sub-label">Move Date</label>
               <input
                 type="date"
                 name="date"
+                min={getCurrentDate()}
                 value={moveDateInput}
-                className="add-customer__date-box"
+                className="add-customer__date-box input"
                 onChange={(event) => setMoveDateInput(event.target.value)}
               />
             </div>
+            {moveDateError && (
+              <p className="login__error-text">
+                <img
+                  className="login__error-icon"
+                  src={Error}
+                  alt="error icon"
+                />
+                Please provide valid date.
+              </p>
+            )}
             <div className="add-customer__input-box">
               <input
                 type="checkbox"
@@ -232,9 +427,14 @@ export const EditCustomer = () => {
             </div>
           </div>
         </div>
-        <button type="submit" className="add-customer__cta">
-          Save Changes
-        </button>
+        <div className="add-customer__cta-container">
+          <button type="submit" className="add-customer__cta">
+            Save Changes
+          </button>
+          <Link className="add-customer__cta" to={`/manager/customer/${id}`}>
+            Back
+          </Link>
+        </div>
       </form>
     </div>
   );

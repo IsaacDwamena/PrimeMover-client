@@ -1,0 +1,97 @@
+@import "../../styles/partials/mixins";
+@import "../../styles/partials/variables";
+
+/* Remove up and down arrows for number input in Webkit browsers */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.estimate {
+  padding: 0 1rem;
+
+  @include tablet {
+    padding: 0;
+  }
+
+  &__input-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+  }
+
+  &__form {
+    background-color: $primary-color-1;
+    padding: 1rem;
+
+    @include mobile-tablet {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      column-gap: 5%;
+    }
+  }
+
+  &__sub-wrap-bottom {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 5%;
+  }
+
+  &__box-count {
+    width: 6rem;
+    text-align: center;
+  }
+
+  &__insurance-box {
+    margin-left: 0.5rem;
+  }
+
+  &__bottom-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    margin: 2rem 0;
+    gap: 1rem;
+
+    @include mobile-tablet {
+      grid-template-columns: repeat(2, 1fr);
+      padding: 0 1rem;
+      gap: 5%;
+    }
+  }
+
+  &__btn-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+
+  &__btn {
+    padding: 1rem;
+    border: none;
+    background-color: $primary-color-1;
+    color: black;
+    border-radius: 5px;
+    text-align: center;
+    font-size: 1rem;
+
+    @include mobile-tablet {
+      // width: 18rem;
+    }
+
+    &:hover {
+      background-color: $primary-color-4;
+      color: $primary-color-1;
+    }
+  }
+
+  &__total-container {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  &__total {
+    color: $primary-color-4;
+  }
+}

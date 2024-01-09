@@ -4,6 +4,7 @@ import { HomeShowcase } from "../../components/homeShowcase/HomeShowcase";
 import { HomeServices } from "../../components/homeServices/HomeServices";
 import { MovingProcess } from "../../components/movingProcess/MovingProcess";
 import { HomeFooter } from "../../components/homeFooter/HomeFooter";
+import { UserForm } from "../../components/userForm/UserForm";
 export const Home = () => {
   return (
     <>
@@ -12,6 +13,7 @@ export const Home = () => {
         <HomeShowcase />
         <HomeServices />
         <MovingProcess />
+        <UserForm />
       </div>
       <HomeFooter />
     </>

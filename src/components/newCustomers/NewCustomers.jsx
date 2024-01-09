@@ -24,7 +24,7 @@ export const NewCustomers = () => {
 
   return (
     <div className="customer">
-      {customers.map((customer) => (
+      {customers.toReversed().map((customer) => (
         <NewCustomerItem
           key={customer.id}
           customer={customer}

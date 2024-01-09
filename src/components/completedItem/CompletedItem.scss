@@ -17,8 +17,21 @@
     gap: 0;
   }
 
+  &__name {
+    color: $primary-color-4;
+  }
+
   &__icons {
     display: flex;
     gap: 1rem;
+  }
+
+  &__revert-icon,
+  &__del-icon {
+    cursor: pointer;
+
+    &:hover {
+      transform: scale(1.1);
+    }
   }
 }

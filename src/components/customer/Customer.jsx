@@ -66,7 +66,7 @@ export const Customer = () => {
               <input
                 type="email"
                 name="email"
-                className="add-customer__email-input"
+                className="add-customer__email-input input"
                 value={customerInfo.email}
                 readOnly={true}
               />
@@ -140,7 +140,7 @@ export const Customer = () => {
               <input
                 type="text"
                 name="residence"
-                className="add-customer__residence-input"
+                className="add-customer__residence-input input"
                 value={customerInfo.residence_type}
                 readOnly={true}
               ></input>
@@ -150,7 +150,7 @@ export const Customer = () => {
               <input
                 type="text"
                 name="date"
-                className="add-customer__date-box"
+                className="add-customer__date-box input"
                 value={new Date(customerInfo.move_date).toLocaleDateString()}
                 readOnly={true}
               />
@@ -167,7 +167,10 @@ export const Customer = () => {
               <label className="add-customer__sub-label">Insurance</label>
             </div>
             <div className="add-customer__buttons">
-              <Link className="add-customer__nav-links">
+              <Link
+                to={`/manager/estimate/${id}`}
+                className="add-customer__nav-links"
+              >
                 <img
                   src={Estimate}
                   alt="estimate icon"
@@ -193,6 +196,9 @@ export const Customer = () => {
                   className="add-customer__icon"
                 />
                 Edit
+              </Link>
+              <Link to="/manager" className="add-customer__nav-links">
+                Back
               </Link>
             </div>
           </div>
