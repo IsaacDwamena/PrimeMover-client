@@ -11,6 +11,10 @@ body {
     gap: 1rem;
   }
 
+  &__sidebar {
+    width: 30%;
+  }
+
   &__main {
     @include tablet {
       width: 100%;

@@ -75,10 +75,7 @@ input[type="number"]::-webkit-outer-spin-button {
     border-radius: 5px;
     text-align: center;
     font-size: 1rem;
-
-    @include mobile-tablet {
-      // width: 18rem;
-    }
+    cursor: pointer;
 
     &:hover {
       background-color: $primary-color-4;

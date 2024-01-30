@@ -4,6 +4,17 @@
 .showcase {
   padding-bottom: 2rem;
 
+  &__container {
+    display: flex;
+    gap: 5%;
+  }
+
+  &__contain {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
   &__title-highlight {
     color: $primary-color-4;
   }
@@ -15,6 +26,18 @@
 
   &__contain-image {
     display: none;
+    width: 50%;
+    object-fit: cover;
+
+    @include tablet {
+      display: block;
+      height: 40vh;
+    }
+  }
+
+  &__image {
+    width: 100%;
+    height: 100%;
   }
 
   &__btn {
@@ -23,5 +46,6 @@
     padding: 0.5rem 0.8rem;
     border-radius: 5px;
     color: $primary-color-1;
+    cursor: pointer;
   }
 }

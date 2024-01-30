@@ -1,4 +1,5 @@
 import "./HomeShowcase.scss";
+import Moving from "../../assets/icons/Moving.svg";
 
 export const HomeShowcase = () => {
   return (
@@ -19,7 +20,9 @@ export const HomeShowcase = () => {
             <button className="showcase__btn">Get Free Estimate</button>
           </a>
         </div>
-        <div className="showcase__contain-image">image</div>
+        <div className="showcase__contain-image">
+          <img src={Moving} alt="moving cargo" className="showcase__image" />
+        </div>
       </div>
     </div>
   );

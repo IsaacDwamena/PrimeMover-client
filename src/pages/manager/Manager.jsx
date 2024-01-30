@@ -25,7 +25,11 @@ export const Manager = () => {
 
   return (
     <div className="manager">
-      <SideBar menuActive={menuActive} onSideMenuToggler={onSideMenuToggler} />
+      <SideBar
+        menuActive={menuActive}
+        onSideMenuToggler={onSideMenuToggler}
+        className="manager__sidebar"
+      />
       <main className="manager__main">
         <TopNav
           setMenuActive={setMenuActive}

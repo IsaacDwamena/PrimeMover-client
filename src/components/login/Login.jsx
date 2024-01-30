@@ -129,6 +129,13 @@ export const Login = () => {
           </div>
         </div>
       </div>
+      <div className="demo-login">
+        <h4 className="demo-login__info">
+          Don't want to create an account? Demo Login:
+        </h4>
+        <p className="demo-login__email">Email: isaacdwamena@gmail.com</p>
+        <p className="demo-login__password">Password: 0000</p>
+      </div>
     </>
   );
 };
