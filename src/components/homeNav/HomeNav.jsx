@@ -8,7 +8,7 @@ export const HomeNav = () => {
         Prime<span className="high">Movers</span>
       </Link>
       <div className="home-nav__links-conatiner">
-        <p className="home-nav__link">Services</p>
+        <p className="home-nav__link">Future features</p>
         <Link to="/login" className="home-nav__login">
           Managerial login
         </Link>

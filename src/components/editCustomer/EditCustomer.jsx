@@ -66,7 +66,6 @@ export const EditCustomer = () => {
   const [destinationAddError, setDestinationAddError] = useState(false);
 
   validator.isAddress = function (value) {
-    console.log("Input value:", value);
     const addressPattern = /^\d+\s[A-Za-z\s]+,\s[A-Za-z\s]+$/i;
     return addressPattern.test(value);
   };
@@ -172,7 +171,6 @@ export const EditCustomer = () => {
             `${SERVER_URL}/customers/${id}`,
             postObj
           );
-          console.log("sent");
           navigate(`/manager`);
         } catch (error) {
           console.log(error);

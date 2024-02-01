@@ -126,7 +126,6 @@ export const AddCustomer = () => {
       !reisdenceInput ||
       !moveDateInput
     ) {
-      console.log("empty field");
     } else {
       const createCustomer = async () => {
         try {

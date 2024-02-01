@@ -14,7 +14,6 @@ export const SearchCustomer = () => {
         const { data } = await axios.get(`${SERVER_URL}/search?q=${query}`);
         if (data.length === 0) {
           setSearchCustomer([]);
-          console.log("No records found for the search query.");
         } else {
           setSearchCustomer(data);
         }
